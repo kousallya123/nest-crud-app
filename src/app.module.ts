@@ -3,9 +3,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EmployeesModule } from './employees/employees.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 @Module({
-  imports:[MongooseModule.forRoot('mongodb+srv://kousallya:FatorkKDpivaKISi@cluster0.sql4ele.mongodb.net/crud-app-nest?retryWrites=true&w=majority'),EmployeesModule],
+  imports:[MongooseModule.forRoot(process.env.Mongo_url),EmployeesModule],
   controllers: [AppController],
   providers: [AppService],
 }) 
